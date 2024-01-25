@@ -80,7 +80,7 @@ namespace cavalier
             return false;
         }
 
-        public static bool playHeuristique(int[][] board, int x, int y, int nombreMouvement)
+        public static bool playWarsndorf(int[][] board, int x, int y, int nombreMouvement)
         {
             board[x][y] = nombreMouvement;
             //Console.WriteLine("move: " + nombreMouvement);
