@@ -56,21 +56,41 @@ func play(board [][]int, x int, y int, nbMoves int, taille int) bool {
 	}
 
 	possibleMoves := make([][][]int, 0)
-	lenMove := make([]int, 0)
 	caseParam := make([][]int, 0)
 
 	for _, m := range moves {
 		newMove := getMoves(board, m[0], m[1], taille)
-		lenMove = append(lenMove, len(newMove))
+		lenMove := make([]int, 1)
+
+		// fmt.Print("newMove : ")
+		// fmt.Println(newMove)
+		lenMove[0] = len(newMove)
+
 		if len(newMove) != 0 || nbMoves+1 == taille*taille {
 			possibleMoves = append(possibleMoves, append(caseParam, lenMove, m))
 		}
 	}
+
 	//on trie en comparant les possibilités du prochain coup [][][X]
 	//entre tous les coups possibles [X][][]
+	// fmt.Print("avant")
+	// fmt.Println(possibleMoves)
 	sort.Slice(possibleMoves, func(i, j int) bool {
-		return possibleMoves[i][0][0] < possibleMoves[j][0][0]
+		return possibleMoves[i][0][0] < possibleMoves[j][0][0] // [][][X] pour X = 0
 	})
+
+	// sort.Slice(possibleMoves[:], func(i, j int) bool {
+	// 	for x := range possibleMoves[i] {
+	// 		if possibleMoves[i][x][0] == possibleMoves[j][x][0] {
+	// 			continue
+	// 		}
+	// 		return possibleMoves[i][x][0] < possibleMoves[j][x][0]
+	// 	}
+	// 	return false
+	// })
+
+	// fmt.Print("après")
+	// fmt.Println(possibleMoves)
 	for _, m := range possibleMoves {
 		if play(board, m[1][0], m[1][1], nbMoves+1, taille) {
 			return true
@@ -110,7 +130,8 @@ func displayBoard(board [][]int) {
 		for j := 0; j < len(board[i]); j++ {
 			s += strconv.Itoa(board[i][j]) + " "
 		}
-		// fmt.Println(s)
+		fmt.Println(s)
 	}
-	// fmt.Println("-----")
+	fmt.Println("-----")
+	// time.Sleep(time.Second)
 }
