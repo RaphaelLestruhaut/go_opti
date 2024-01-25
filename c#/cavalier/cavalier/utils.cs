@@ -29,7 +29,7 @@ namespace cavalier
 
         public static bool isMoveInvalid(int[][] board, int x, int y)
         {
-            return x < 0 || x >= size || y < 0 || y >= size || board[x][y] != -1;
+            return x < 0 || x >= size || y < 0 || y >= size || board[x][y] != 0;
         }
 
         public static (int,int)[] getMoves(int[][] board, int x, int y)
@@ -59,7 +59,7 @@ namespace cavalier
                 bool win = nombreMouvement == size * size;
                 if (!win)
                 {
-                    board[x][y] = -1;
+                    board[x][y] = 0;
                     return false;
                 }
                 else
@@ -76,11 +76,11 @@ namespace cavalier
                     return true; 
                 }
             }
-            board[x][y] = -1;
+            board[x][y] = 0;
             return false;
         }
 
-        public static bool playHeuristique(int[][] board, int x, int y, int nombreMouvement)
+        public static bool playWarsndorf(int[][] board, int x, int y, int nombreMouvement)
         {
             board[x][y] = nombreMouvement;
             //Console.WriteLine("move: " + nombreMouvement);
@@ -91,7 +91,7 @@ namespace cavalier
                 bool win = nombreMouvement==size * size;
                 if(!win)
                 {
-                    board[x][y]=-1;
+                    board[x][y]=0;
                     return false;
                 }
                 else
@@ -110,7 +110,7 @@ namespace cavalier
                     possibleMoves.Add((newMove.Length,move));
                 }
             }
-            possibleMoves = possibleMoves.OrderBy(x => x.Item1).ToList();
+            possibleMoves.Sort();
             foreach (var move in possibleMoves)
             {
                 if(playHeuristique(board,move.Item2.Item1,move.Item2.Item2,nombreMouvement+1))
@@ -118,7 +118,7 @@ namespace cavalier
                     return true;
                 }
             }
-            board[x][y] = -1;
+            board[x][y] = 0;
             return false;
         }
     }
