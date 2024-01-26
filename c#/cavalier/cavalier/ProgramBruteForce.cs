@@ -1,5 +1,4 @@
-﻿
-using cavalier;
+﻿using cavalier;
 
 class Hello
 {
@@ -26,7 +25,7 @@ class Hello
 
         Utils.size = n;
 
-        Utils.playWarsndorf(board, 0, 0, 1);
+        Utils.play(board, 0, 0, 1);
         DateTime t1 = DateTime.Now;
         Console.WriteLine(t1-t0);
         Console.WriteLine(n);
