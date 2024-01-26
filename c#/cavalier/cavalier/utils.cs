@@ -51,8 +51,6 @@ namespace cavalier
         public static bool play(int[][] board, int x, int y, int nombreMouvement) 
         {
             board[x][y] = nombreMouvement;
-            //Console.WriteLine("move: " + nombreMouvement);
-            //Utils.boardDisplay(board);
             (int, int)[] moves = Utils.getMoves(board,x,y);
             if(moves.Length == 0)
             {
