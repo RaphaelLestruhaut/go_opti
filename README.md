@@ -1,0 +1,4 @@
+Le dépôt git est découpé comme suit:
+- le dossier C#/cavalier contient une solution visual studio. Cette solution est consitiué de deux projet visual studio, le premier nommé "cavalier" contient l'implémentation en C# de l'algorithme brute force. Le second nommé "CavalierWarsndorf" contient l'implémentation en C# de l'algorithme avec la règle de Warsndorf
+- Le dossier python contient deux script python. Le script nommé "cavalier.py" contient l'algorithme brute force implémenté en python et le script nommé "warsndorf.py" contient l'implémentation de l'algorithme avec la règle de Warsndorf en python
+- le dossier go contient deux sous dossier. Le premier sous dossier est nommé cavalier est contient un fichier nommé "main.go" qui contient l'implémentation en go de l'algorithme brute force. L'autre sous dossier nommé "cavalier_opti" contient un fichier nommé "main.go" qui contient l'implémentation en go de l'algorithme avec la règle de Warsndorf
